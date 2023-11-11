@@ -7,6 +7,8 @@ public class SkillManager : MonoBehaviour
     private CanvasGroup groupSkill;
     [SerializeField, Header("按鈕技能物件 1 ~ 3")]
     private Transform[] objectSkill;
+    [SerializeField, Header("全部的技能資料")]
+    private DataSkill[] dataSkills;
 
     /// <summary>
     /// 升級後顯示技能介面
