@@ -13,4 +13,6 @@ public class DataSkill : ScriptableObject
     public int lv = 1;
     [Header("該技能各等級的數值")]
     public float[] skillValues;
+    [Header("對應的升級物件名稱")]
+    public string nameSkillUpgrade;
 }
