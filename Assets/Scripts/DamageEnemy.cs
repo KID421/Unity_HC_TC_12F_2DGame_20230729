@@ -8,7 +8,8 @@ public class DamageEnemy : DamageBasic
     {
         // print($"<color=#69f>碰到的物件：{collision.gameObject.name}</color>");
 
-        if (collision.gameObject.name.Contains("武器")) Damage(50);
+        if (collision.gameObject.name.Contains("武器")) 
+            Damage(collision.gameObject.GetComponent<Weapon>().attack);
     }
 
     // 碰撞結束執行一次

@@ -2,8 +2,8 @@
 
 public class WeaponSystem : MonoBehaviour
 {
-    [Header("生成武器間隔"), Range(0, 6)]
-    public float interval = 3;
+    [SerializeField, Header("炸雞武器技能資料")]
+    private DataSkill dataSkill;
     [Header("武器預製物")]
     public GameObject prefabWeapon;
     [Header("武器發射力道")]
@@ -14,7 +14,8 @@ public class WeaponSystem : MonoBehaviour
         // SpawnWeapon();
 
         // 重複呼叫 SpawnWeapon 間隔為 interval
-        InvokeRepeating("SpawnWeapon", 0, interval);
+        int lv = dataSkill.lv - 1;
+        InvokeRepeating("SpawnWeapon", 0, dataSkill.skillValues[lv]);
     }
 
     private void SpawnWeapon()
