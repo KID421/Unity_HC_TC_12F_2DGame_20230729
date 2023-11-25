@@ -29,6 +29,12 @@ public class ControlSystem : MonoBehaviour
         Move();
     }
 
+    private void OnDisable()
+    {
+        rig.velocity = Vector3.zero;
+        ani.SetBool(parWalk, false);
+    }
+
     private void Move()
     {
         float h = Input.GetAxis("Horizontal");

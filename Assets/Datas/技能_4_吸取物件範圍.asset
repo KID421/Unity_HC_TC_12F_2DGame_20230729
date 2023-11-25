@@ -16,10 +16,10 @@ MonoBehaviour:
   skillPicture: {fileID: 21300000, guid: 5421e90cce8ac6343bda593946e22230, type: 3}
   skillDescription: "\u63D0\u5347\u5438\u53D6\u7269\u4EF6\u7BC4\u570D\uFF0C\u6BCF\u500B\u7B49\u7D1A\u63D0\u5347
     1 \u7684\u7BC4\u570D\u3002"
-  lv: 1
+  lv: 2
   skillValues:
   - 3
-  - 10
+  - 4
   - 5
   - 6
   - 7

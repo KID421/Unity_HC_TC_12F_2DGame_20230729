@@ -18,6 +18,11 @@ public class WeaponSystem : MonoBehaviour
         InvokeRepeating("SpawnWeapon", 0, dataSkill.skillValues[lv]);
     }
 
+    private void OnDisable()
+    {
+        CancelInvoke("SpawnWeapon");
+    }
+
     private void SpawnWeapon()
     {
         GameObject temp = Instantiate(prefabWeapon, transform.position, transform.rotation);
