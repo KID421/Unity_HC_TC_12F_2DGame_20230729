@@ -20,12 +20,40 @@ public class SkillManager : MonoBehaviour
     [SerializeField, Header("按鈕技能 1 ~ 3")]
     private Button[] btnSkill;
 
+    [SerializeField, Header("升級技能系統")]
+    private GameObject[] skillUpgrades;
+
     private void Awake()
     {
         for (int i = 0; i < btnSkill.Length; i++)
         {
-            btnSkill[i].onClick.AddListener(() => { print("按下按鈕"); });
+            int index = i;
+            btnSkill[i].onClick.AddListener(() => 
+            { 
+                for (int j = 0; j < dataSkills.Length; j++)
+                {
+                    // 如果按下的技能 等於 全部技能
+                    // 處理該技能的升級功能
+                    if (randomSkills[index] == dataSkills[j])
+                    {
+                        dataSkills[j].lv++;
+                        skillUpgrades[j].GetComponent<ISkillUpgrade>().SkillUpgrade();
+                        StartCoroutine(LevelUpHandle());
+                    }
+                }
+            });
         }
+    }
+
+    private IEnumerator LevelUpHandle()
+    {
+        groupSkill.interactable = false;
+        groupSkill.blocksRaycasts = false;
+        yield return new WaitForSecondsRealtime(0.5f);
+        UpdateSKillUI();
+        yield return new WaitForSecondsRealtime(1);
+        Time.timeScale = 1;
+        groupSkill.alpha = 0;
     }
 
     /// <summary>

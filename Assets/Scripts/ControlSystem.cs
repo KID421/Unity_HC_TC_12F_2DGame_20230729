@@ -2,8 +2,9 @@
 
 public class ControlSystem : MonoBehaviour
 {
-    [Header("移動速度"), Range(0, 100)]
-    public float speed = 3.5f;
+    [SerializeField, Header("玩家資料")]
+    private DataBasic dataPlayer;
+    
     [Header("剛體")]
     public Rigidbody2D rig;
     [Header("動畫控制器")]
@@ -33,7 +34,7 @@ public class ControlSystem : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        rig.velocity = new Vector2(h, v) * speed;
+        rig.velocity = new Vector2(h, v) * dataPlayer.speed;
 
         ani.SetBool(parWalk, h != 0 || v != 0);
 
