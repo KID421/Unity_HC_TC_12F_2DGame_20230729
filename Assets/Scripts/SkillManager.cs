@@ -49,9 +49,9 @@ public class SkillManager : MonoBehaviour
     {
         groupSkill.interactable = false;
         groupSkill.blocksRaycasts = false;
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.3f);
         UpdateSKillUI();
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(0.75f);
         Time.timeScale = 1;
         groupSkill.alpha = 0;
     }

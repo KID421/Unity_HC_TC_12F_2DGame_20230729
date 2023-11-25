@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(200)]
 public class DamagePlayer : DamageBasic
 {
     [Header("血量圖片")]
@@ -24,6 +25,14 @@ public class DamagePlayer : DamageBasic
 
         base.Damage(damage);
 
+        imgHp.fillAmount = hp / hpMax;
+        textHp.text = $"{hp} / {hpMax}";
+    }
+
+    public void LevelUp()
+    {
+        hp = data.hp;
+        hpMax = data.hp;
         imgHp.fillAmount = hp / hpMax;
         textHp.text = $"{hp} / {hpMax}";
     }

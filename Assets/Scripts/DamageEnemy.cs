@@ -37,7 +37,7 @@ public class DamageEnemy : DamageBasic
         base.Dead();
 
         float random = Random.value;
-        print($"<color=#66f>隨機值：{random}</color>");
+        // print($"<color=#66f>隨機值：{random}</color>");
 
         if (random <= dataEnemy.expProbability)
         {
