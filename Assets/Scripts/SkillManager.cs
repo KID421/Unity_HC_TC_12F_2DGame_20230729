@@ -13,6 +13,8 @@ public class SkillManager : MonoBehaviour
     private Transform[] objectSkill;
     [SerializeField, Header("全部的技能資料")]
     private DataSkill[] dataSkills;
+    [SerializeField, Header("升級技能音效")]
+    private AudioClip soundSkillLevelUp;
 
     [SerializeField]
     private List<DataSkill> randomSkills = new List<DataSkill>();
@@ -36,6 +38,7 @@ public class SkillManager : MonoBehaviour
                     // 處理該技能的升級功能
                     if (randomSkills[index] == dataSkills[j])
                     {
+                        SoundManager.instance.PlaySound(soundSkillLevelUp, 1.3f, 2);
                         dataSkills[j].lv++;
                         skillUpgrades[j].GetComponent<ISkillUpgrade>().SkillUpgrade();
                         StartCoroutine(LevelUpHandle());

@@ -27,15 +27,26 @@ public class DamageEnemy : DamageBasic
 
     private DataEnemy dataEnemy;
 
+    [SerializeField, Header("受傷音效")]
+    private AudioClip soundDamage;
+    [SerializeField, Header("死亡音效")]
+    private AudioClip soundDead;
+
     private void Start()
     {
         dataEnemy = (DataEnemy)data;
     }
 
+    public override void Damage(float damage)
+    {
+        base.Damage(damage);
+        SoundManager.instance.PlaySound(soundDamage, 1.5f, 2.2f);
+    }
+
     protected override void Dead()
     {
         base.Dead();
-
+        SoundManager.instance.PlaySound(soundDead, 1.5f, 2.2f);
         float random = Random.value;
         // print($"<color=#66f>隨機值：{random}</color>");
 

@@ -174,3 +174,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: af2d77f26a179e14080c4fb3528e0277, type: 2}
   prefabDamage: {fileID: 906670271899949048, guid: d270aefed99470940bf5fe318ed914d7, type: 3}
+  soundDamage: {fileID: 8300000, guid: b971035561e6b164eae32aa75b717e7c, type: 3}
+  soundDead: {fileID: 8300000, guid: 78ec427b271c31240bc53456c00c47f8, type: 3}

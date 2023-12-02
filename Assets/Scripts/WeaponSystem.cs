@@ -8,6 +8,8 @@ public class WeaponSystem : MonoBehaviour
     public GameObject prefabWeapon;
     [Header("武器發射力道")]
     public Vector2 v2Power = new Vector2(0, 100);
+    [SerializeField, Header("丟武器音效")]
+    private AudioClip soundThrow;
 
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class WeaponSystem : MonoBehaviour
 
     private void SpawnWeapon()
     {
+        SoundManager.instance.PlaySound(soundThrow, 1.5f, 2.3f);
         GameObject temp = Instantiate(prefabWeapon, transform.position, transform.rotation);
         temp.GetComponent<Rigidbody2D>().AddForce(v2Power * transform.right + new Vector2(0, v2Power.y));
     }

@@ -1,13 +1,15 @@
-using TMPro;
+ï»¿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("¸gÅç­È¹Ï¤ù")]
+    [Header("ç¶“é©—å€¼åœ–ç‰‡")]
     public Image imgExp;
-    [Header("µ¥¯Å¤å¦r")]
+    [Header("ç­‰ç´šæ–‡å­—")]
     public TextMeshProUGUI textLv;
+    [SerializeField, Header("å‡ç´šéŸ³æ•ˆ")]
+    private AudioClip soundLevelUp;
 
     private int lv = 1;
     private float expCurrent;
@@ -22,19 +24,19 @@ public class LevelManager : MonoBehaviour
         skillManager = FindObjectOfType<SkillManager>();
     }
 
-    /* ½m²ßµ{¦¡
+    /* ç·´ç¿’ç¨‹å¼
     private void Awake()
     {
-        // ¨ú±o°}¦C¸ê®Æ
-        print($"²Ä¤Tµ¥ªº¸gÅç»İ¨D¡G{expNeeds[2]}");
+        // å–å¾—é™£åˆ—è³‡æ–™
+        print($"ç¬¬ä¸‰ç­‰çš„ç¶“é©—éœ€æ±‚ï¼š{expNeeds[2]}");
 
-        // ³]©w°}¦C¸ê®Æ
+        // è¨­å®šé™£åˆ—è³‡æ–™
         expNeeds[0] = 110;
 
-        // for °j°é
+        // for è¿´åœˆ
         for (int i = 0; i < 10; i++)
         {
-            print($"<color=#f69>°j°éªº i ­È¡G{i}</color>");
+            print($"<color=#f69>è¿´åœˆçš„ i å€¼ï¼š{i}</color>");
         }
 
         for (int i = 0; i < 3; i++)
@@ -44,7 +46,7 @@ public class LevelManager : MonoBehaviour
     }
     */
 
-    [ContextMenu("«Ø¥ß¸gÅç»İ¨D¸ê®Æ")]
+    [ContextMenu("å»ºç«‹ç¶“é©—éœ€æ±‚è³‡æ–™")]
     private void CreateExpNeedsData()
     {
         expNeeds = new float[100];
@@ -56,9 +58,9 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ²K¥[¸gÅç­È¨Ã¥B§ó·s¸gÅç­È¤¶­±
+    /// æ·»åŠ ç¶“é©—å€¼ä¸¦ä¸”æ›´æ–°ç¶“é©—å€¼ä»‹é¢
     /// </summary>
-    /// <param name="exp">­n²K¥[ªº¸gÅç­È</param>
+    /// <param name="exp">è¦æ·»åŠ çš„ç¶“é©—å€¼</param>
     public void AddExp(float exp)
     {
         expCurrent += exp;
@@ -68,10 +70,11 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ¤É¯Å
+    /// å‡ç´š
     /// </summary>
     private void LevelUp()
     {
+        SoundManager.instance.PlaySound(soundLevelUp, 2.2f, 3);
         lv++;
         textLv.text = "Lv " + lv;
         expCurrent -= expNeed;

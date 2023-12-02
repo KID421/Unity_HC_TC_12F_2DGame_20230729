@@ -16,6 +16,10 @@ public class DamagePlayer : DamageBasic
     private WeaponSystem wepaonSystem;
     [SerializeField, Header("吃到具碰撞")]
     private CircleCollider2D circleCollider2D;
+    [SerializeField, Header("受傷音效")]
+    private AudioClip soundDamage;
+    [SerializeField, Header("死亡音效")]
+    private AudioClip soundDead;
 
     private ControlSystem controlSystem;
 
@@ -32,7 +36,13 @@ public class DamagePlayer : DamageBasic
 
         base.Damage(damage);
 
+        SoundManager.instance.PlaySound(soundDamage, 1.2f, 2.5f);
+
         imgHp.fillAmount = hp / hpMax;
+
+        // 血量 = 數學函式.夾住(血量，0，血量最大值)
+        // 將血量夾在 0 ~ hpMax 之間
+        hp = Mathf.Clamp(hp, 0, hpMax);
         textHp.text = $"{hp} / {hpMax}";
     }
 
@@ -47,6 +57,9 @@ public class DamagePlayer : DamageBasic
     protected override void Dead()
     {
         base.Dead();
+
+        SoundManager.instance.PlaySound(soundDead, 1.8f, 3f);
+
         textHp.text = $"0 / {hpMax}";
         controlSystem.enabled = false;
         wepaonSystem.enabled = false;
