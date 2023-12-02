@@ -1,7 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 [DefaultExecutionOrder(200)]
 public class DamagePlayer : DamageBasic
@@ -10,8 +9,7 @@ public class DamagePlayer : DamageBasic
     public Image imgHp;
     [Header("血量文字")]
     public TextMeshProUGUI textHp;
-    [SerializeField, Header("結束畫面")]
-    private CanvasGroup groupFinal;
+    
     [SerializeField, Header("武器系統")]
     private WeaponSystem wepaonSystem;
     [SerializeField, Header("吃到具碰撞")]
@@ -64,18 +62,6 @@ public class DamagePlayer : DamageBasic
         controlSystem.enabled = false;
         wepaonSystem.enabled = false;
         circleCollider2D.enabled = false;
-        StartCoroutine(GameOver());
-    }
-
-    private IEnumerator GameOver()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            groupFinal.alpha += 0.1f;
-            yield return new WaitForSeconds(0.03f);
-        }
-
-        groupFinal.interactable = true;
-        groupFinal.blocksRaycasts = true;
+        GameManager.instance.StartGameOver();
     }
 }
