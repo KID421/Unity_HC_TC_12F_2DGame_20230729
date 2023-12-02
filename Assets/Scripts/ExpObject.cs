@@ -10,7 +10,7 @@ public class ExpObject : MonoBehaviour
     [SerializeField, Header("經驗值"), Range(0, 5000)]
     private float exp = 30;
 
-    private string namePlayer = "黑貓";
+    private string namePlayer = "玩家_黑貓";
 	private Transform playerPoint;
     private LevelManager levelManager;
     #endregion

@@ -6,7 +6,7 @@ public class TrackPlayer : MonoBehaviour
 
     private void Awake()
     {
-        pointPlayer = GameObject.Find("黑貓").transform;
+        pointPlayer = GameObject.Find("玩家_黑貓").transform;
     }
 
     private void Update()

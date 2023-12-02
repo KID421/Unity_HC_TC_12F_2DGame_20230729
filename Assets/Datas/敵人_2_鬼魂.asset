@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa3ec77a3414ac408d9b416faa8a682, type: 3}
   m_Name: "\u6575\u4EBA_2_\u9B3C\u9B42"
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 2
   hp: 300
   attack: 100
   expProbability: 0.8
   expPrefab: {fileID: 7575956157664246674, guid: e03ffb6f727cc454787db994311fd1eb, type: 3}
-  attackSendTime: 0.6
+  attackSendTime: 0.5
   attackInterval: 3
-  attackDistance: 3
+  attackDistance: 2.8

@@ -15,7 +15,7 @@ public class EnemySystem : MonoBehaviour
 
     private void Awake()
     {
-        playerPoint = GameObject.Find("黑貓").transform;
+        playerPoint = GameObject.Find("玩家_黑貓").transform;
         damagePlayer = playerPoint.GetComponent<DamagePlayer>();
         ani = GetComponent<Animator>();
     }
