@@ -22,11 +22,22 @@ public class WaveManager : MonoBehaviour
         {
             print($"<color=#f69>波數：{dataWaves[i].name}</color>");
 
-            // 每一個生成敵人系統都要重新啟動
-            for (int j = 0; j < spawnEnemys.Length; j++)
+            // 如果是最後一波 BOSS 就生成一隻
+            if (i == dataWaves.Length - 1 )
             {
-                // 更新每個生成系統的間隔時間 與 預製物
-                spawnEnemys[j].RestartSpawn(dataWaves[i].interval, dataWaves[i].prefabEnemy);
+                // 隨機挑出一個生成點生成 BOSS
+                int random = Random.Range(0, spawnEnemys.Length);
+                spawnEnemys[random].RestartSpawn(dataWaves[i].interval, dataWaves[i].prefabEnemy);
+            }
+            // 否則就生成八隻
+            else
+            {
+                // 每一個生成敵人系統都要重新啟動
+                for (int j = 0; j < spawnEnemys.Length; j++)
+                {
+                    // 更新每個生成系統的間隔時間 與 預製物
+                    spawnEnemys[j].RestartSpawn(dataWaves[i].interval, dataWaves[i].prefabEnemy);
+                }
             }
 
             yield return new WaitForSeconds(dataWaves[i].duration);

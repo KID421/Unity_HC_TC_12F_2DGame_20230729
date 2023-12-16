@@ -24,6 +24,15 @@ public class LevelManager : MonoBehaviour
         skillManager = FindObjectOfType<SkillManager>();
     }
 
+    private void Update()
+    {
+#if UNITY_EDITOR
+        // 如果在編輯器內 才會有作用
+        // 如果按下左邊數字 1 就加經驗 100
+        if (Input.GetKeyDown(KeyCode.Alpha1)) AddExp(100);
+#endif
+    }
+
     /* 練習程式
     private void Awake()
     {

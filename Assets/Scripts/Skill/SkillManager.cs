@@ -24,6 +24,8 @@ public class SkillManager : MonoBehaviour
 
     [SerializeField, Header("升級技能系統")]
     private GameObject[] skillUpgrades;
+    [SerializeField, Header("按鈕全部升滿")]
+    private Button btnAllSkillFull;
 
     private void Awake()
     {
@@ -92,14 +94,46 @@ public class SkillManager : MonoBehaviour
         UpdateSKillUI();
     }
 
+    /// <summary>
+    /// 更新技能介面
+    /// </summary>
     private void UpdateSKillUI()
     {
+        // 先隱藏全部的升級按鈕
+        for (int i = 0; i < 3; i++)
+        {
+            objectSkill[i].gameObject.SetActive(false);
+        }
+        // 顯示隨機技能數量的按鈕
+        for (int i = 0; i < randomSkills.Count && i < 3; i++)
+        {
+            objectSkill[i].gameObject.SetActive(true);
+        }
+
+        // 如果隨機技能數量 等於 0 (全部都升滿)
+        if (randomSkills.Count == 0)
+        {
+            // 顯示全部升滿按鈕並且跳出
+            btnAllSkillFull.gameObject.SetActive(true);
+            return;
+        }
+
         for (int i = 0; i < objectSkill.Length; i++)
         {
+            // 如果 該技能按鈕是隱藏狀態 就跳出
+            if (!objectSkill[i].gameObject.activeSelf) return;
+
             DataSkill dataSkill = randomSkills[i];
             objectSkill[i].Find("技能名稱").GetComponent<TextMeshProUGUI>().text = dataSkill.skillName;
             objectSkill[i].Find("技能描述").GetComponent<TextMeshProUGUI>().text = dataSkill.skillDescription;
             objectSkill[i].Find("技能圖片").GetComponent<Image>().sprite = dataSkill.skillPicture;
+
+            for (int j = 0; j < 5; j++)
+            {
+                Color colorStar = objectSkill[i].Find("星星群組/星星 " + (j + 1)).GetComponent<Image>().color;
+                colorStar.a = 0;
+                objectSkill[i].Find("星星群組/星星 " + (j + 1)).GetComponent<Image>().color = colorStar;
+            }
 
             for (int j = 0; j < dataSkill.lv; j++)
             {

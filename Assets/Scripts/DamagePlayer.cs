@@ -62,6 +62,6 @@ public class DamagePlayer : DamageBasic
         controlSystem.enabled = false;
         wepaonSystem.enabled = false;
         circleCollider2D.enabled = false;
-        GameManager.instance.StartGameOver();
+        GameManager.instance.StartGameOver("挑戰失敗");
     }
 }

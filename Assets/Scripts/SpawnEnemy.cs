@@ -7,10 +7,7 @@ public class SpawnEnemy : MonoBehaviour
     [Header("敵人預製物")]
     public GameObject prefabEnemy;
 
-    private void Awake()
-    {
-        InvokeRepeating("SpawnEnemyMethod", 0, interval);
-    }
+   
 
     private void SpawnEnemyMethod()
     {

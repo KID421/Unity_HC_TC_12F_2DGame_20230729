@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: "\u6CE2\u6578_2_\u9B3C\u9B42"
   m_EditorClassIdentifier: 
   prefabEnemy: {fileID: 1990368730636263570, guid: 57fbba1ca638c674393dfea5cfc112ca, type: 3}
-  duration: 1
+  duration: 60
   interval: 3
