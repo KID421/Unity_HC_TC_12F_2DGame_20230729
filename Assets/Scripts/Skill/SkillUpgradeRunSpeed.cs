@@ -17,6 +17,6 @@ public class SkillUpgradeRunSpeed : MonoBehaviour, ISkillUpgrade
     {
         int lv = dataSkill.lv - 1;
         dataPlayer.speed = dataSkill.skillValues[lv];
-        print($"<color=#f69>升級跑速，目前的跑速是：{dataPlayer.speed}</color>");
+        // print($"<color=#f69>升級跑速，目前的跑速是：{dataPlayer.speed}</color>");
     }
 }

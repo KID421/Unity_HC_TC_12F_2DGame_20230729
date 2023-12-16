@@ -32,8 +32,8 @@ public class SkillManager : MonoBehaviour
         for (int i = 0; i < btnSkill.Length; i++)
         {
             int index = i;
-            btnSkill[i].onClick.AddListener(() => 
-            { 
+            btnSkill[i].onClick.AddListener(() =>
+            {
                 for (int j = 0; j < dataSkills.Length; j++)
                 {
                     // 如果按下的技能 等於 全部技能
@@ -48,6 +48,13 @@ public class SkillManager : MonoBehaviour
                 }
             });
         }
+
+        // 點擊所有技能全滿按鈕 淡出畫面 恢復原本時間
+        btnAllSkillFull.onClick.AddListener(() =>
+        {
+            StartCoroutine(FadeInSkillUI(false));
+            Time.timeScale = 1;
+        });
     }
 
     private IEnumerator LevelUpHandle()
@@ -74,16 +81,23 @@ public class SkillManager : MonoBehaviour
     /// <summary>
     /// 淡入技能介面
     /// </summary>
-    private IEnumerator FadeInSkillUI()
+    private IEnumerator FadeInSkillUI(bool fadeIn = true)
     {
+        // 三元運算子
+        // 布林值 ? 布林值等於 true : 布林值等於 false
+        // true ? 1 : -1 結果：1
+        // false ? 1 : -1 結果：-1
+
+        float increase = fadeIn ? +0.1f : -0.1f;
+
         for (int i = 0; i < 10; i++)
         {
-            groupSkill.alpha += 0.1f;
+            groupSkill.alpha += increase;
             yield return new WaitForSecondsRealtime(0.035f);
         }
 
-        groupSkill.interactable = true;
-        groupSkill.blocksRaycasts = true;
+        groupSkill.interactable = fadeIn;
+        groupSkill.blocksRaycasts = fadeIn;
     }
 
     private void RandomSkill()

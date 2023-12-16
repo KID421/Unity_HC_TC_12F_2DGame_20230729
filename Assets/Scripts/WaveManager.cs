@@ -20,7 +20,7 @@ public class WaveManager : MonoBehaviour
     {
         for (int i = 0; i < dataWaves.Length; i++)
         {
-            print($"<color=#f69>波數：{dataWaves[i].name}</color>");
+            // print($"<color=#f69>波數：{dataWaves[i].name}</color>");
 
             // 如果是最後一波 BOSS 就生成一隻
             if (i == dataWaves.Length - 1 )
